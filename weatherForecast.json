@@ -1,0 +1,507 @@
+{
+    "city": {
+        "coord": {
+            "lat": 45.9195,
+            "lon": 10.8587
+        },
+        "country": "IT",
+        "id": 3165817,
+        "name": "Tenno",
+        "population": 1735,
+        "sunrise": 1751772788,
+        "sunset": 1751828948,
+        "timezone": 7200
+    },
+    "cnt": 40,
+    "cod": "200",
+    "list": [
+        {
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1751824800,
+            "dt_txt": "2025-07-06 18:00:00",
+            "main": {
+                "feels_like": 24.21,
+                "grnd_level": 898,
+                "humidity": 82,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "temp": 23.65,
+                "temp_kf": 0.43,
+                "temp_max": 23.65,
+                "temp_min": 23.22
+            },
+            "pop": 1,
+            "rain": {
+                "3h": 2.79
+            },
+            "sys": {
+                "pod": "d"
+            },
+            "visibility": 5169,
+            "weather": [
+                {
+                    "description": "pioggia leggera",
+                    "icon": "10d",
+                    "id": 500,
+                    "main": "Rain"
+                }
+            ],
+            "wind": {
+                "deg": 208,
+                "gust": 1.23,
+                "speed": 1.39
+            }
+        },
+        {
+            "clouds": [],
+            "dt": 1751835600,
+            "dt_txt": "2025-07-06 21:00:00",
+            "main": [],
+            "pop": 1,
+            "rain": [],
+            "sys": [],
+            "visibility": 4071,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751846400,
+            "dt_txt": "2025-07-07 00:00:00",
+            "main": [],
+            "pop": 1,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751857200,
+            "dt_txt": "2025-07-07 03:00:00",
+            "main": [],
+            "pop": 1,
+            "rain": [],
+            "sys": [],
+            "visibility": 4257,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751868000,
+            "dt_txt": "2025-07-07 06:00:00",
+            "main": [],
+            "pop": 1,
+            "rain": [],
+            "sys": [],
+            "visibility": 3630,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751878800,
+            "dt_txt": "2025-07-07 09:00:00",
+            "main": [],
+            "pop": 1,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751889600,
+            "dt_txt": "2025-07-07 12:00:00",
+            "main": [],
+            "pop": 0.8,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751900400,
+            "dt_txt": "2025-07-07 15:00:00",
+            "main": [],
+            "pop": 0.26,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751911200,
+            "dt_txt": "2025-07-07 18:00:00",
+            "main": [],
+            "pop": 0.57,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751922000,
+            "dt_txt": "2025-07-07 21:00:00",
+            "main": [],
+            "pop": 0.99,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751932800,
+            "dt_txt": "2025-07-08 00:00:00",
+            "main": [],
+            "pop": 1,
+            "rain": [],
+            "sys": [],
+            "visibility": 3252,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751943600,
+            "dt_txt": "2025-07-08 03:00:00",
+            "main": [],
+            "pop": 1,
+            "rain": [],
+            "sys": [],
+            "visibility": 2994,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751954400,
+            "dt_txt": "2025-07-08 06:00:00",
+            "main": [],
+            "pop": 1,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751965200,
+            "dt_txt": "2025-07-08 09:00:00",
+            "main": [],
+            "pop": 0.9,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751976000,
+            "dt_txt": "2025-07-08 12:00:00",
+            "main": [],
+            "pop": 0.78,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751986800,
+            "dt_txt": "2025-07-08 15:00:00",
+            "main": [],
+            "pop": 0.92,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1751997600,
+            "dt_txt": "2025-07-08 18:00:00",
+            "main": [],
+            "pop": 1,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752008400,
+            "dt_txt": "2025-07-08 21:00:00",
+            "main": [],
+            "pop": 0.89,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752019200,
+            "dt_txt": "2025-07-09 00:00:00",
+            "main": [],
+            "pop": 0.81,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752030000,
+            "dt_txt": "2025-07-09 03:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752040800,
+            "dt_txt": "2025-07-09 06:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752051600,
+            "dt_txt": "2025-07-09 09:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752062400,
+            "dt_txt": "2025-07-09 12:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752073200,
+            "dt_txt": "2025-07-09 15:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752084000,
+            "dt_txt": "2025-07-09 18:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752094800,
+            "dt_txt": "2025-07-09 21:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752105600,
+            "dt_txt": "2025-07-10 00:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752116400,
+            "dt_txt": "2025-07-10 03:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752127200,
+            "dt_txt": "2025-07-10 06:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752138000,
+            "dt_txt": "2025-07-10 09:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752148800,
+            "dt_txt": "2025-07-10 12:00:00",
+            "main": [],
+            "pop": 0.21,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752159600,
+            "dt_txt": "2025-07-10 15:00:00",
+            "main": [],
+            "pop": 0.22,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752170400,
+            "dt_txt": "2025-07-10 18:00:00",
+            "main": [],
+            "pop": 0.34,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752181200,
+            "dt_txt": "2025-07-10 21:00:00",
+            "main": [],
+            "pop": 0.04,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752192000,
+            "dt_txt": "2025-07-11 00:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752202800,
+            "dt_txt": "2025-07-11 03:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752213600,
+            "dt_txt": "2025-07-11 06:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752224400,
+            "dt_txt": "2025-07-11 09:00:00",
+            "main": [],
+            "pop": 0,
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752235200,
+            "dt_txt": "2025-07-11 12:00:00",
+            "main": [],
+            "pop": 0.2,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        },
+        {
+            "clouds": [],
+            "dt": 1752246000,
+            "dt_txt": "2025-07-11 15:00:00",
+            "main": [],
+            "pop": 0.8,
+            "rain": [],
+            "sys": [],
+            "visibility": 10000,
+            "weather": [],
+            "wind": []
+        }
+    ],
+    "message": 0
+}
