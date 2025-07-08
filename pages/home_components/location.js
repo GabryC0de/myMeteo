@@ -1,18 +1,23 @@
+// React
 import React, { useState, useEffect } from 'react';
 import { View, Text, ActivityIndicator, Alert, Linking } from 'react-native';
 
+//Redux
+import { useSelector } from 'react-redux';
+import { selectLoader } from '../../store/loadersSlice.js';
 
-const LocationManager = ({ location, loading, loadingAddress, error }) => {
-    
+const LocationManager = ({ location, loading, error }) => {
+
+    const addressLoading = useSelector(selectLoader('address'));
 
     return (
-        <View style={{ padding: 20 }}>
-            {loading || loadingAddress ? (
+        <View>
+            {loading || addressLoading ? (
                 <ActivityIndicator size="large" />
             ) : error ? (
                 <Text style={{ color: 'red' }}>{error}</Text>
             ) : (
-                <Text style={{ fontSize: 18, marginBottom: 20, fontWeight: 'bold' }}>
+                <Text style={{ fontFamily: 'MiSans-Medium', color: 'white', fontSize: 18 }}>
                     {location}
                 </Text>
             )}

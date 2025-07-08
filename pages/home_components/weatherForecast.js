@@ -1,57 +1,81 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, Image } from 'react-native';
+import React, { useEffect } from 'react'
+import { View, Text, Image, Pressable, StyleSheet, ActivityIndicator, Button } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchWeather } from '../../store/weatherSlice';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+
 
 function GetWeatherForecast({ lat, lon }) {
-
-    const [weather, setWeather] = useState(null);
-    const [loading, setLoading] = useState(false);
-
-    const fetchWeatherData = async (lat, lon) => {
-        if (!lat || !lon) return;
-
-        const API_KEY = "3a7c7be0b2c932aa543572cf106403e4"; // Sostituisci con la tua chiave
-        const FORECAST_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=it`;
-        try {
-            setLoading(true);
-
-            const response = await fetch(FORECAST_URL);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            // Estrai i dati giornalieri (1 previsione al giorno alle 12:00)
-            const dailyForecasts = data.list.filter(item =>
-                item.dt_txt.includes("12:00:00")
-            ).slice(0, 5); // Prendi solo 5 giorni
-
-            setWeather({
-                current: data.list[0],
-                forecast: dailyForecasts
-            });
-
-        } catch (error) {
-            console.error("Errore nel fetch:", error);
-            Alert.alert("Errore", "Impossibile ottenere i dati meteo");
-        } finally {
-            setLoading(false);
-        }
-    };
+    const dispatch = useDispatch();
+    const { current, daily, status, error } = useSelector((state) => state.weather);
 
     useEffect(() => {
-        fetchWeatherData(lat, lon);
-    }, [lat, lon])
-    return (
-        <View>
-            {/* <Image
-                source={{ uri: `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png` }}
-                style={{ width: 50, height: 50 }}
-            /> */}
-        </View>
-    )
+        if (lat && lon) {  // Solo se lat/lon sono validi
+            dispatch(fetchWeather({ lat, lon }));
+        }
+    }, [dispatch, lat, lon]);
 
+    if (status === 'loading') {
+        return <ActivityIndicator size="large" />;
+    }
+
+    if (status === 'failed') {
+        return <Text>Error: {error}</Text>;
+    }
+
+    return (
+        <>
+            <View style={styles.forecastContainer}>
+                <Pressable style={{ padding: 5, height: 30, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Text style={{ color: 'rgba(255, 255, 255, 0.8)', fontFamily: 'MiSans-Medium' }}>
+                        Previsioni in 5 giorni
+                    </Text>
+                    <Text style={{ color: 'rgba(255, 255, 255, 0.8)', fontFamily: 'MiSans-Medium' }}>
+                        {'Dettagli >'}
+                    </Text>
+                </Pressable>
+
+                <Pressable style={{ padding: 5 }}>
+                    {
+                        (daily) ?
+                            (daily.slice(0, 3).map((day, index) => (
+                                <View key={index} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                    <View style={{ display: 'flex', flexDirection: 'row', width: '50%', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <Text style={{ textTransform: 'capitalize', color: 'white', fontFamily: 'MiSans-Medium' }}>
+                                            {new Date(day.date).toLocaleDateString('it-IT', { weekday: 'long' }).slice(0, 3)}
+                                        </Text>
+                                        <Image
+                                            source={{ uri: `https://openweathermap.org/img/wn/${day.icon}@2x.png` }}
+                                            style={{ height: 50, aspectRatio: '1/1' }} />
+                                    </View>
+                                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: '50%' }}>
+                                        <Text style={[styles.texts, { color: 'rgba(255, 255, 255, 0.7)' }]}>{day.minTemp}°</Text>
+                                        <Text style={[styles.texts, { color: 'rgba(255, 255, 255, 0.7)' }]}>----------</Text>
+                                        <Text style={[styles.texts, { color: 'rgba(255, 255, 255, 0.7)' }]}>{day.maxTemp}°</Text>
+                                    </View>
+                                </View>
+                            ))
+                            ) : ''
+                    }
+                </Pressable>
+            </View >
+        </>
+    )
 };
+
+const styles = StyleSheet.create({
+    forecastContainer: {
+        display: 'block',
+        borderRadius: 16,
+        padding: 15,
+        width: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.15)',
+    },
+    texts: {
+        fontFamily: 'MiSans-Medium',
+        fontSize: 12
+    }
+})
 
 export default GetWeatherForecast;
