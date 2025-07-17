@@ -19,7 +19,7 @@ function Header() {
 const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
-        height: 45,
+        height: 40,
         alignItems: 'center',
         justifyContent: 'flex-end',
         margin: 10,

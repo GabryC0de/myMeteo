@@ -1,5 +1,5 @@
 // React
-import { StyleSheet, View, SafeAreaView, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, SafeAreaView, ActivityIndicator, Animated } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 
@@ -21,10 +21,9 @@ function Main() {
 
     const dispatch = useDispatch();
     const fontsLoading = useSelector(selectLoader('fonts'));
-    const addressLoading = useSelector(selectLoader('address'));
+    const currentLocationLoader = useSelector(selectLoader('currentLocationLoader'));
 
     const [location, setLocation] = useState(null);
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [address, setAddress] = useState(null);
 
@@ -66,7 +65,7 @@ function Main() {
     };
 
     const getCurrentLocation = async () => {
-        setLoading(true);
+        dispatch(startLoading('currentLocationLoader'))
         setError(null);
 
         try {
@@ -87,7 +86,7 @@ function Main() {
         } catch (error) {
             setError(error.message);
         } finally {
-            setLoading(false);
+            dispatch(finishLoading('currentLocationLoader'));
         }
     };
 
@@ -121,10 +120,10 @@ function Main() {
     }, []);
 
     useEffect(() => {
-        if (location && !loading) {
+        if (location && !currentLocationLoader) {
             getAddressFromCoordinates(location.latitude, location.longitude);
         }
-    }, [location, loading]);
+    }, [location, currentLocationLoader]);
 
     // Funzione per visualizzare l'indirizzo in modo sicuro
     const renderAddress = () => {
@@ -141,40 +140,63 @@ function Main() {
 
     return (
         <LinearGradient
-            // colors={['#4c669f', '#3b5998', '#192f6a']} // Array di colori per il gradiente
             colors={['#244588', '#3560ae', '#97c9ea']} // Array di colori per il gradiente
             start={{ x: 0, y: 0 }} // Punto di inizio (0,0) = top-left
             end={{ x: 0, y: 1 }}   // Punto di fine (1,1) = bottom-right
-            style={styles.container}
-        >
-            {(fontsLoading) ? <ActivityIndicator size={'large'}></ActivityIndicator> : <></>}
-            <SafeAreaView style={{ backgroundImage: 'linearGradient(rgba(151,201,234,255), black)', flex: 1, padding: 15 }}>
-                <Header></Header>
-                <View style={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
-                    <View>
-                        <WeatherNow
-                            lat={location?.latitude}  // Usa l'operatore ?. per sicurezza
-                            lon={location?.longitude}
-                            location={renderAddress()}
-                            loading={loading}
-                            error={error}>
-                        </WeatherNow>
+            style={styles.container}>
+            {(fontsLoading) ? <ActivityIndicator size={'large'}></ActivityIndicator> :
+                <SafeAreaView style={{ flex: 1, padding: 15 }}>
+                    <Header></Header>
+                    <View style={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
+                        <View>
+                            <WeatherNow
+                                lat={location?.latitude}  // Usa l'operatore ?. per sicurezza
+                                lon={location?.longitude}
+                                location={renderAddress()}
+                                error={error}>
+                            </WeatherNow>
+                        </View>
+                        <View>
+                            <GetWeatherForecast lat={(location && !currentLocationLoader) ? location.latitude : null} lon={(location && !currentLocationLoader) ? location.longitude : null}>
+                            </GetWeatherForecast>
+                        </View>
                     </View>
-                    <View>
-                        <GetWeatherForecast lat={(location && !loading) ? location.latitude : null} lon={(location && !loading) ? location.longitude : null}>
-                        </GetWeatherForecast>
-                    </View>
-                </View>
-            </SafeAreaView>
 
-        </LinearGradient>
+                </SafeAreaView>
+            }
+        </LinearGradient >
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
+        padding: 0,
     },
+    title: {
+        fontSize: 20,
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    progressBar: {
+        width: '100%',
+        height: 20,
+        backgroundColor: '#eee',
+        borderRadius: 10,
+        overflow: 'hidden',
+    },
+    progress: {
+        height: '100%',
+        backgroundColor: 'tomato',
+        borderRadius: 10,
+    },
+    percentText: {
+        marginTop: 10,
+        textAlign: 'center',
+        fontSize: 16,
+    },
+
 });
 
 export default Main;

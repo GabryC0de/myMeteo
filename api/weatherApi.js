@@ -20,6 +20,7 @@ export const fetchWeatherData = async (lat, lon) => {
     }
 };
 
+// funzione che processa i dati dell'API
 const processDailyForecast = (list) => {
     const dailyForecasts = {};
     list.forEach((item) => {

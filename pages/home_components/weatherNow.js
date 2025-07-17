@@ -5,7 +5,7 @@ import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native';
 import LocationManager from './location';
 import { fetchWeather } from '../../store/weatherSlice.js';
 
-function WeatherNow({ lat, lon, location, loadingProp, errorProp }) {
+function WeatherNow({ lat, lon, location, errorProp }) {
     const dispatch = useDispatch();
     const { current, daily, status, error } = useSelector((state) => state.weather);
 
@@ -25,9 +25,9 @@ function WeatherNow({ lat, lon, location, loadingProp, errorProp }) {
 
     return (
 
-        <View>
+        <View style={{ marginBottom: 10}}>
             <View style={styles.location}>
-                <LocationManager location={location} loading={loadingProp} error={errorProp}>
+                <LocationManager location={location} error={errorProp}>
                 </LocationManager>
                 {(current && status == 'succeeded') ? <Image
                     source={{ uri: `https://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png` }}

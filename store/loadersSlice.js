@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     // Ogni chiave rappresenta un loader specifico
     fonts: false,
-    currentLocation: false,
+    currentLocationLoader: false,
     address: false,
     // Aggiungi altri loader qui
 };

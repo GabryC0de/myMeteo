@@ -2,9 +2,8 @@ import React, { useEffect } from 'react'
 import { View, Text, Image, Pressable, StyleSheet, ActivityIndicator, Button } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchWeather } from '../../store/weatherSlice';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-
-
+import LinearProgressBar from './linearProgressBar.js'
+import TestProgress from './prova.js';
 
 function GetWeatherForecast({ lat, lon }) {
     const dispatch = useDispatch();
@@ -49,16 +48,22 @@ function GetWeatherForecast({ lat, lon }) {
                                             source={{ uri: `https://openweathermap.org/img/wn/${day.icon}@2x.png` }}
                                             style={{ height: 50, aspectRatio: '1/1' }} />
                                     </View>
-                                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', width: '50%' }}>
-                                        <Text style={[styles.texts, { color: 'rgba(255, 255, 255, 0.7)' }]}>{day.minTemp}°</Text>
-                                        <Text style={[styles.texts, { color: 'rgba(255, 255, 255, 0.7)' }]}>----------</Text>
-                                        <Text style={[styles.texts, { color: 'rgba(255, 255, 255, 0.7)' }]}>{day.maxTemp}°</Text>
+                                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
+                                        <Text style={[styles.texts, { color: 'rgba(255, 255, 255, 0.7)' }]}>{Math.round(day.minTemp)}°</Text>
+                                        <LinearProgressBar
+                                            min={0.2}
+                                            max={.86}
+                                            progress={0.7}>
+                                        </LinearProgressBar>
+                                        <Text style={[styles.texts, { color: 'rgba(255, 255, 255, 0.7)' }]}>{Math.round(day.maxTemp)}°</Text>
                                     </View>
                                 </View>
                             ))
                             ) : ''
                     }
                 </Pressable>
+
+                {/* <TestProgress></TestProgress> */}
             </View >
         </>
     )
