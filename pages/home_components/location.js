@@ -17,7 +17,7 @@ const LocationManager = ({ location, error }) => {
             ) : error ? (
                 <Text style={{ color: 'red' }}>{error}</Text>
             ) : (
-                <Text style={{ fontFamily: 'MiSans-Medium', color: 'white', fontSize: 18 }}>
+                <Text style={{ fontFamily: 'MiSans-Medium', color: '#ffffff', fontSize: 18 }}>
                     {location}
                 </Text>
             )}

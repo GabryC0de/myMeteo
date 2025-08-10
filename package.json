@@ -16,19 +16,19 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-native-fontawesome": "^0.3.2",
     "@reduxjs/toolkit": "^2.8.2",
-    "axios": "^1.10.0",
     "expo": "~53.0.17",
     "expo-font": "~13.3.2",
     "expo-linear-gradient": "~14.1.5",
     "expo-location": "~18.1.6",
     "expo-permissions": "^14.4.0",
+    "expo-secure-store": "~14.2.3",
     "expo-status-bar": "~2.2.3",
-    "lottie-react-native": "^7.2.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.5",
     "react-native-progress": "^5.0.1",
     "react-native-svg": "15.11.2",
+    "react-native-svg-transformer": "^1.5.1",
     "react-native-web": "^0.20.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.6.3",
@@ -36,8 +36,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@react-native-community/cli": "^18.0.0",
-    "concurrently": "^9.2.0"
+    "@react-native-community/cli": "^18.0.0"
   },
   "private": true
 }

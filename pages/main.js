@@ -1,5 +1,5 @@
 // React
-import { StyleSheet, View, SafeAreaView, ActivityIndicator, Animated } from 'react-native';
+import { StyleSheet, View, SafeAreaView, ActivityIndicator } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 

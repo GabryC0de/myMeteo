@@ -5,12 +5,15 @@ import { fetchWeatherData } from '../api/weatherApi';
 export const fetchWeather = createAsyncThunk(
     'weather/fetchWeather',
     async ({ lat, lon }) => {
+        // chiamata all'API con lat e lon opportune
         const data = await fetchWeatherData(lat, lon);
         return data;
     }
 );
 
+// creazione dello slice
 const weatherSlice = createSlice({
+    // inizializzazione dei valori dello slice
     name: 'weather',
     initialState: {
         current: null,
@@ -19,6 +22,7 @@ const weatherSlice = createSlice({
         error: null,
     },
     reducers: {},
+    // tiene traccia dello stato della chiamata all'API
     extraReducers: (builder) => {
         builder
             .addCase(fetchWeather.pending, (state) => {
