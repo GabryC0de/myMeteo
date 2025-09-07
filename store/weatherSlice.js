@@ -18,6 +18,7 @@ const weatherSlice = createSlice({
     initialState: {
         current: null,
         daily: [],
+        today: [],
         status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         error: null,
     },
@@ -31,6 +32,7 @@ const weatherSlice = createSlice({
             .addCase(fetchWeather.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.current = action.payload.current;
+                state.today = action.payload.today;
                 state.daily = action.payload.daily;
             })
             .addCase(fetchWeather.rejected, (state, action) => {

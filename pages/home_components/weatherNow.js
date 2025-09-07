@@ -1,8 +1,14 @@
+// Components
 import LocationManager from './location'
-import React, { useEffect } from 'react'
+import { FontAwesomeIcon } from '../../icons/icons.js';
+
+// Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchWeather } from '../../store/weatherSlice.js';
-import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native';
+
+// React
+import React, { useEffect } from 'react'
+import { View, Text, Image, StyleSheet, ActivityIndicator, Pressable } from 'react-native';
 
 
 function WeatherNow({ lat, lon, location, errorProp }) {
@@ -30,22 +36,25 @@ function WeatherNow({ lat, lon, location, errorProp }) {
                 <LocationManager location={location} error={errorProp}>
                 </LocationManager>
                 {(current && status == 'succeeded') ?
-
                     <Image
                         source={{ uri: `https://gabryc0de.github.io/weather-icons/wmo_${current.weather_code}.png` }}
                         // source={{ uri: `https://gabryc0de.github.io/weather-icons/wmo_${current.weather_code}_n.png` }} // Uploada le variabili "Night" delle icone
                         style={[styles.weatherIcons, { height: 50 }]} />
-
                     : <ActivityIndicator size={'large'}></ActivityIndicator>}
-
             </View>
-            <View style={styles.displayTemp}>
-                <Text style={styles.texts}>
+            <View style={{ display: 'flex' }}>
+                <Text style={styles.text}>
                     {(current && status == 'succeeded') ? Math.round(current.temperature_2m) + '°' : ""}
                 </Text>
                 <Text style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: 18, fontFamily: 'MiSans-Regular', textTransform: 'capitalize' }}>
                     {(current && status == 'succeeded') ? `${current.description} ${Math.round(daily[0].maxTemp)}°/${Math.round(daily[0].minTemp)}°` : ""}
                 </Text>
+                <Pressable style={{ alignSelf: 'flex-start', width: '25%', display: 'inline-block', marginTop: 5, borderRadius: 100, backgroundColor: 'rgba(255, 255, 255, 0.15)', padding: 8 }}>
+                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', }}>
+                        <FontAwesomeIcon icon="leaf" size={16} color="rgba(255, 255, 255, 0.6)" />
+                        <Text style={{ fontSize: 14, color: 'white', fontFamily: 'MiSans-Regular' }}>{` AQI ${(current && status == 'succeeded') ? current.european_aqi : ''}`}</Text>
+                    </View>
+                </Pressable>
             </View>
         </View>
     )
@@ -56,7 +65,7 @@ const styles = StyleSheet.create(
         weatherIcons: {
             aspectRatio: '1/1',
         },
-        texts: {
+        text: {
             fontFamily: 'MiSans-ExtraLight',
             color: 'white',
             fontSize: 110,
@@ -68,9 +77,6 @@ const styles = StyleSheet.create(
             alignItems: 'center',
             flexDirection: 'row',
         },
-        displayTemp: {
-
-        }
     }
 )
 export default WeatherNow;

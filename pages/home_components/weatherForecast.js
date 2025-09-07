@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { FontAwesomeIcon } from '../../icons/icons.js' // Importa dalla tua libreria
 import LinearProgressBar from './linearProgressBar.js'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchWeather } from '../../store/weatherSlice'
 import { View, Text, Image, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
+
 
 function GetWeatherForecast({ lat, lon }) {
 
@@ -43,19 +45,23 @@ function GetWeatherForecast({ lat, lon }) {
         <>
             <View style={styles.forecastContainer}>
                 <Pressable style={{ padding: 5, height: 30, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Text style={{ color: 'rgba(255, 255, 255, 0.8)', fontFamily: 'MiSans-Medium' }}>
+                    <Text style={{ color: 'rgba(255, 255, 255, 0.8)', fontFamily: 'MiSans-Medium', width: '50%' }}>
                         Previsioni in 5 giorni
                     </Text>
-                    <Text style={{ color: 'rgba(255, 255, 255, 0.8)', fontFamily: 'MiSans-Medium' }}>
-                        {'Dettagli >'}
-                    </Text>
+                    <View style={{ display: 'flex', width: '50%', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
+                        <Text style={{ color: 'rgba(255, 255, 255, 0.8)', fontFamily: 'MiSans-Medium' }}>
+                            Dettagli
+                        </Text>
+                        <FontAwesomeIcon icon="caret-right" size={16} color="rgba(255, 255, 255, 0.8)" />
+                    </View>
+
                 </Pressable>
 
                 <Pressable style={{ padding: 5 }}>
                     {
                         (daily) ?
                             (daily.slice(0, 3).map((day, index) => (
-                                <View key={index} style={styles.daysForecast}>
+                                <View key={index} style={[styles.daysForecast, { borderBottomWidth: (index == 2) ? 'none' : StyleSheet.hairlineWidth }]}>
                                     <View style={{ display: 'flex', flexDirection: 'row', width: '50%', height: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <Text style={{ textTransform: 'capitalize', color: 'white', fontFamily: 'MiSans-Medium' }}>
                                             {new Date(day.date).toLocaleDateString('it-IT', { weekday: 'long' }).slice(0, 3)}
@@ -86,6 +92,11 @@ function GetWeatherForecast({ lat, lon }) {
                             ))) : ''
                     }
                 </Pressable>
+                <Pressable style={{ width: '100%', height: 45, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.15)', borderRadius: 10 }}>
+                    <Text style={[styles.texts, { color: 'white', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }]}>
+                        Vedi Dati Completi
+                    </Text>
+                </Pressable>
             </View >
         </>
     )
@@ -97,18 +108,17 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         padding: 15,
         width: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.15)',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
     },
     daysForecast: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         borderBottomColor: 'rgba(255, 255, 255, 0.2)',
-        borderBottomWidth: StyleSheet.hairlineWidth,
     },
     texts: {
         fontFamily: 'MiSans-Medium',
-        fontSize: 12,
+        fontSize: 15,
         width: '20%',
         textAlign: 'center'
     }

@@ -1,20 +1,23 @@
 // React
-import { StyleSheet, View, SafeAreaView, ActivityIndicator } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, View, SafeAreaView, ActivityIndicator, ScrollView } from 'react-native'
 
 // Expo
-import { LinearGradient } from 'expo-linear-gradient';
-import * as Location from 'expo-location';
-import * as Font from 'expo-font';
+import * as Font from 'expo-font'
+import * as Location from 'expo-location'
+import { LinearGradient } from 'expo-linear-gradient'
 
 //Redux
-import { startLoading, finishLoading, selectLoader } from '../store/loadersSlice.js';
+import { useSelector, useDispatch } from 'react-redux'
+import { startLoading, finishLoading, selectLoader } from '../store/loadersSlice.js'
 
 // Components
 import Header from './home_components/header.js'
-import WeatherNow from './home_components/weatherNow.js';
-import GetWeatherForecast from './home_components/weatherForecast.js';
+import LineChart from './home_components/lineChart.js'
+import BarsDataset from './home_components/barChart.js'
+import WeatherNow from './home_components/weatherNow.js'
+import ProgressBarsSection from './home_components/progressBars.js'
+import GetWeatherForecast from './home_components/weatherForecast.js'
 
 // Componente principale dell'App
 function Main() {
@@ -143,60 +146,38 @@ function Main() {
             colors={['#244588', '#3560ae', '#97c9ea']} // Array di colori per il gradiente
             start={{ x: 0, y: 0 }} // Punto di inizio (0,0) = top-left
             end={{ x: 0, y: 1 }}   // Punto di fine (1,1) = bottom-right
-            style={styles.container}>
+            style={{ flex: 1, justifyContent: 'center', padding: 0, }}>
             {(fontsLoading) ? <ActivityIndicator size={'large'}></ActivityIndicator> :
-                <SafeAreaView style={{ flex: 1, padding: 15 }}>
+                <SafeAreaView style={{ flex: 1, padding: 15, paddingBottom: 0 }}>
                     <Header></Header>
-                    <View style={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
-                        <View>
-                            <WeatherNow
-                                lat={location?.latitude}  // Usa l'operatore ?. per sicurezza
-                                lon={location?.longitude}
-                                location={renderAddress()}
-                                error={error}>
-                            </WeatherNow>
+                    <ScrollView>
+                        <View style={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
+                            <View style={{ marginBottom: 100 }}>
+                                <WeatherNow
+                                    lat={location?.latitude}  // Usa l'operatore ?. per sicurezza
+                                    lon={location?.longitude}
+                                    location={renderAddress()}
+                                    error={error}>
+                                </WeatherNow>
+                            </View>
+                            <View>
+                                <GetWeatherForecast lat={(location && !currentLocationLoader) ? location.latitude : null} lon={(location && !currentLocationLoader) ? location.longitude : null}>
+                                </GetWeatherForecast>
+                            </View>
                         </View>
                         <View>
-                            <GetWeatherForecast lat={(location && !currentLocationLoader) ? location.latitude : null} lon={(location && !currentLocationLoader) ? location.longitude : null}>
-                            </GetWeatherForecast>
+                            {/* <BarsDataset></BarsDataset> */}
+                            <LineChart></LineChart>
                         </View>
-                    </View>
 
+                        <View style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 5, marginTop: 20, marginBottom: 20 }}>
+                            <ProgressBarsSection></ProgressBarsSection>
+                        </View>
+                    </ScrollView>
                 </SafeAreaView>
             }
         </LinearGradient >
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 0,
-    },
-    title: {
-        fontSize: 20,
-        marginBottom: 20,
-        textAlign: 'center',
-    },
-    progressBar: {
-        width: '100%',
-        height: 20,
-        backgroundColor: '#eee',
-        borderRadius: 10,
-        overflow: 'hidden',
-    },
-    progress: {
-        height: '100%',
-        backgroundColor: 'tomato',
-        borderRadius: 10,
-    },
-    percentText: {
-        marginTop: 10,
-        textAlign: 'center',
-        fontSize: 16,
-    },
-
-});
 
 export default Main;

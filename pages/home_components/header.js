@@ -1,16 +1,13 @@
 import { StyleSheet, View, Dimensions, Pressable } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '../../icons/icons.js'; // Importa dalla tua libreria
 function Header() {
-    // const screenWidth = Dimensions.get('window').width;
-    // const width = screenWidth - 20; // Simile a calc(100% - 20)
     return (
         <View style={styles.header}>
             <Pressable style={[styles.headerIcons, { marginRight: 5 }]} onPress={() => { console.log("Clicked +!") }}>
-                <FontAwesomeIcon style={styles.icons} icon={faPlus} size={20} />
+                <FontAwesomeIcon style={styles.icons} icon={'plus'} size={20} />
             </Pressable>
             <Pressable style={[styles.headerIcons, { marginLeft: 5 }]} onPress={() => { console.log("Clicked ...!") }}>
-                <FontAwesomeIcon style={styles.icons} icon={faEllipsisVertical} size={20} />
+                <FontAwesomeIcon style={styles.icons} icon={'ellipsis-vertical'} size={20} />
             </Pressable>
         </View>
     )
@@ -22,7 +19,6 @@ const styles = StyleSheet.create({
         height: 40,
         alignItems: 'center',
         justifyContent: 'flex-end',
-        margin: 10,
         borderRadius: 16,
         padding: 3,
     },

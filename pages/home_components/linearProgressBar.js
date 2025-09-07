@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Circle } from 'react-native-svg';
 
-const PROGRESS_BAR_WIDTH = 80;
-const PROGRESS_BAR_HEIGHT = 7;
+const PROGRESS_BAR_WIDTH = 70;
+const PROGRESS_BAR_HEIGHT = 6;
 // const { width: PROGRESS_BAR_WIDTH } = Dimensions.get('window');
 function LinearProgressBar({ min, max, weekMinMax, isToday }) {
 
@@ -34,7 +34,7 @@ function LinearProgressBar({ min, max, weekMinMax, isToday }) {
       {
         (isToday) ?
           <Svg height="100%" width="100%" style={{ position: 'absolute' }}>
-            <Circle cx={`${(current.temperature_2m)}%`} cy='50%' r={(PROGRESS_BAR_HEIGHT / 2) - 1} fill={'white'}></Circle>
+            <Circle cx={`${(current.temperature_2m)}%`} cy='50%' r={(PROGRESS_BAR_HEIGHT / 2) + 1} fill={'rgba(255, 255, 255, 0.6)'}></Circle>
           </Svg> : <></>
       }
     </View>
